@@ -57,48 +57,94 @@ class SQLHelper():
 
         return(data_map)
     
-    # def getBarData(self, house_type, price, num_beds, num_baths, price_by_sqft, distance):
-    #      # allow the user to select the filters for the house they are looking for
-    #     if house_type == "All":
-    #         where_clause1 = "1=1"
-    #     else:
-    #         where_clause1 = f"House_Type == '{house_type}'"
+    def getBarData(self, house_type, price, num_beds, num_baths, price_by_sqft, distance):
+         # allow the user to select the filters for the house they are looking for
+        if house_type == "All":
+            where_clause1 = "1=1"
+        else:
+            where_clause1 = f"House_Type == '{house_type}'"
             
-    #     if price == "All":
-    #         where_clause2 = "1=1"
-    #     else:
-    #         where_clause2 = f"PRICE <= {price}"
+        if price == "All":
+            where_clause2 = "1=1"
+        else:
+            where_clause2 = f"PRICE <= {price}"
             
-    #     if num_beds == "All":
-    #         where_clause3 = "1=1"
-    #     else:
-    #         where_clause3 = f"BEDS <= {num_beds}"
+        if num_beds == "All":
+            where_clause3 = "1=1"
+        else:
+            where_clause3 = f"BEDS <= {num_beds}"
             
-    #     if num_baths == "All":
-    #         where_clause4 = "1=1"
-    #     else:
-    #         where_clause4 = f"BATH <= {num_baths}"
+        if num_baths == "All":
+            where_clause4 = "1=1"
+        else:
+            where_clause4 = f"BATH <= {num_baths}"
 
-    #     if price_by_sqft == "All":
-    #         where_clause5 = "1=1"
-    #     else:
-    #         where_clause5 = f"PRICE_BY_SQFT <= {price_by_sqft}"
+        if price_by_sqft == "All":
+            where_clause5 = "1=1"
+        else:
+            where_clause5 = f"PRICE_BY_SQFT <= {price_by_sqft}"
             
-    #     if distance == "All":
-    #         where_clause6 = "1=1"
-    #     else:
-    #         where_clause6 = f"Distance <= {distance}"
+        if distance == "All":
+            where_clause6 = "1=1"
+        else:
+            where_clause6 = f"Distance <= {distance}"
             
-    #     query = f"""
-    #             SELECT
-    #                 *
-    #             FROM
-    #                 NYC_Houses
-    #             WHERE
-    #                 {where_clause1} AND {where_clause2} AND {where_clause3} AND {where_clause4} AND {where_clause5} AND {where_clause6};
-    #     """
+        query = f"""
+                SELECT
+                    *
+                FROM
+                    NYC_Houses
+                WHERE
+                    {where_clause1} AND {where_clause2} AND {where_clause3} AND {where_clause4} AND {where_clause5} AND {where_clause6};
+        """
 
-    #     df_bar = pd.read_sql(text(query), con=self.engine)
-    #     data_bar = df_bar.to_dict(orient="records")
+        df_bar = pd.read_sql(text(query), con=self.engine)
+        data_bar = df_bar.to_dict(orient="records")
 
-    #     return(data_bar)
+        return(data_bar)
+    
+    def getScatterData(self, house_type, price, num_beds, num_baths, price_by_sqft, distance):
+         # allow the user to select the filters for the house they are looking for
+        if house_type == "All":
+            where_clause1 = "1=1"
+        else:
+            where_clause1 = f"House_Type == '{house_type}'"
+            
+        if price == "All":
+            where_clause2 = "1=1"
+        else:
+            where_clause2 = f"PRICE <= {price}"
+            
+        if num_beds == "All":
+            where_clause3 = "1=1"
+        else:
+            where_clause3 = f"BEDS <= {num_beds}"
+            
+        if num_baths == "All":
+            where_clause4 = "1=1"
+        else:
+            where_clause4 = f"BATH <= {num_baths}"
+
+        if price_by_sqft == "All":
+            where_clause5 = "1=1"
+        else:
+            where_clause5 = f"PRICE_BY_SQFT <= {price_by_sqft}"
+            
+        if distance == "All":
+            where_clause6 = "1=1"
+        else:
+            where_clause6 = f"Distance <= {distance}"
+            
+        query = f"""
+                SELECT
+                    *
+                FROM
+                    NYC_Houses
+                WHERE
+                    {where_clause1} AND {where_clause2} AND {where_clause3} AND {where_clause4} AND {where_clause5} AND {where_clause6};
+        """
+
+        df_scatter = pd.read_sql(text(query), con=self.engine)
+        data_scatter = df_scatter.to_dict(orient="records")
+
+        return(data_scatter)
