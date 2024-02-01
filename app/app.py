@@ -28,6 +28,8 @@ def get_data(house_type, price, num_beds, num_baths, price_by_sqft, distance):
 
     return jsonify(data)
 
+
+
 @app.route("/about_us")
 def about_us():
     return render_template("about_us.html")

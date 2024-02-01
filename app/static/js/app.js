@@ -22,6 +22,7 @@ function doWork() {
 
     makeMap(data);
     makeBar(data);
+    makeScatter(data);
   });
 }
 
@@ -77,8 +78,8 @@ function makeMap(data) {
 
   // Create a map object, and set the default layers.
   let myMap = L.map("map", {
-    center: [40.7306, -73.9352],
-    zoom: 4,
+    center: [40.7302, -73.9346],
+    zoom: 10.25,
     layers: [street, markerLayer]
   });
 
@@ -102,28 +103,54 @@ function makeMap(data) {
 }
 
 
-// function makeBar(data) {
+function makeBar(data) {
 
-//   // Trace for the Data
-//   let trace = {
-//     x: data.bar_data.map(row => row.Borough).reverse(),
-//     y: data.bar_data.map(row => row.).reverse(),
-//     type: "bar",
-//     orientation: "h"
-//   }
+  // Trace for the Data
+  let trace = {
+    x: data.bar_data.map(row => row.PRICE),
+    y: data.bar_data.map(row => row.ADDRESS),
+    type: "bar",
+    orientation: "h"
+  }
 
-//   // Data array
-//   let traces = [trace];
+  // Data array
+  let traces = [trace];
 
-//   // Apply a title to the layout
-//   let layout = {
-//     title: `Top 10 Cities with Chipotle`,
-//     margin: { l: 200 }}
+  // Apply a title to the layout
+  let layout = {
+    title: `10 Most Expensive Houses`,
+    margin: { l: 200 }}
 
-//   // Render the plot to the div tag with id "plot"
-//   Plotly.newPlot("bar", traces, layout);
+  // Render the plot to the div tag with id "plot"
+  Plotly.newPlot("bar", traces, layout);
 
-// }
+}
+
+function makeScatter(data) {
+  
+  // Step 3: Create a trace for the scatter plot
+  let scatter_trace = {
+    x: data.scatter_data.map(row => row.Distance),
+    y: data.scatter_data.map(row => row.PRICE_BY_SQFT),
+    mode: 'markers',
+    type: 'scatter'
+  };
+
+  // Step 4: Define the layout options
+  let scatter_layout = {
+    title: 'Distance from NYC Center vs Price by Square Foot',
+    xaxis: {
+      title: 'Distance from Center of NYC (Miles)'
+    },
+    yaxis: {
+      title: 'Price by Square Foot'
+    }
+  };
+
+  // Step 5: Create the Plotly plot
+  Plotly.newPlot('chart', [scatter_trace], scatter_layout);
+  
+  }
 
 // INITIALIZE plot on page load
 doWork();

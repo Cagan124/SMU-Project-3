@@ -95,7 +95,10 @@ class SQLHelper():
                 FROM
                     NYC_Houses
                 WHERE
-                    {where_clause1} AND {where_clause2} AND {where_clause3} AND {where_clause4} AND {where_clause5} AND {where_clause6};
+                    {where_clause1} AND {where_clause2} AND {where_clause3} AND {where_clause4} AND {where_clause5} AND {where_clause6}
+                ORDER BY
+                    PRICE desc
+                LIMIT 10;
         """
 
         df_bar = pd.read_sql(text(query), con=self.engine)
