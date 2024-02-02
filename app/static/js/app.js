@@ -1,8 +1,18 @@
 // select the dropdown
-let dropdown = d3.select("#dropdown");
+let houseType_dropdown = d3.select("#houseType_dropdown");
+let price_filter = d3.select("#price_filter");
+let beds_filter = d3.select("#beds_filter");
+let baths_filter = d3.select("#baths_filter");
+let distance_filter = d3.select("#distance_filter");
+
+let button = d3.select("#filter")
+// let beds_dropdown = d3.select("#beds_dropdown");
+// let baths_dropdown = d3.select("#baths_dropdown");
+// let priceSQFT_dropdown = d3.select("#priceSQFT_dropdown");
+// let dropdown = d3.select("#dropdown");
 
 // add an event listener for a CHANGE
-dropdown.on("change", function () {
+button.on("click", function () {
   //  console.log("Event Listener heard!! YAY!");
 
   // on change, do work
@@ -11,10 +21,14 @@ dropdown.on("change", function () {
 
 // get the new data
 function doWork() {
-  let inp_house_type = dropdown.property("value");
-
+  let inp_house_type = houseType_dropdown.property("value");
+  let inp_price = price_filter.property("value");
+  let inp_beds = beds_filter.property("value");
+  let inp_baths = baths_filter.property("value");
+  let inp_distance = distance_filter.property("value");
+  
   // grab the data
-  let url = `/api/v1.0/${inp_house_type}/9999999999999/999999999/9999999/9999999/999999`;
+  let url = `/api/v1.0/${inp_house_type}/${inp_price}/${inp_beds}/${inp_baths}/999999/${inp_distance}`;
 
   // make request
   d3.json(url).then(function (data) {
@@ -65,7 +79,7 @@ function makeMap(data) {
     let location = [latitude, longitude];
 
     // Add a new marker to the cluster group, and bind a popup.
-    let marker = L.marker(location).bindPopup(`<h3>${row.PRICE}</h3>`);
+    let marker = L.marker(location).bindPopup(`<h3>$${row.PRICE}</h3>`);
     markerLayer.addLayer(marker);
 
     // for the heatmap
@@ -110,7 +124,10 @@ function makeBar(data) {
     x: data.bar_data.map(row => row.PRICE),
     y: data.bar_data.map(row => row.ADDRESS),
     type: "bar",
-    orientation: "h"
+    orientation: "h",
+    marker: {
+      color: '#45C070' // Specify the color you want for all bars
+    }
   }
 
   // Data array
@@ -133,7 +150,10 @@ function makeScatter(data) {
     x: data.scatter_data.map(row => row.Distance),
     y: data.scatter_data.map(row => row.PRICE_BY_SQFT),
     mode: 'markers',
-    type: 'scatter'
+    type: 'scatter',
+    marker: {
+      color: '#45C070' // Use the 'color' variable from your JSON data
+    }
   };
 
   // Step 4: Define the layout options
