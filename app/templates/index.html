@@ -33,6 +33,30 @@
 
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <style>
+      
+      .container {
+        display: flex;
+      }
+
+      .left-content {
+        margin-right: auto;
+      }
+
+      .right-content {
+        margin-left: 20px; /* Adjust the value as needed */
+      }
+
+      h1 {
+       margin-top: 20px;
+       margin-left: 20px;
+      text-align: center;
+      }
+  
+      #map_container {
+        padding-top: 80px;
+      }
+      </style>
 
   </head>
 
@@ -43,14 +67,16 @@
 
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">Dashboard</a>
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/about_us">About Us</a>
@@ -59,27 +85,34 @@
         </div>
       </div>
     </nav>
-    </nav>
-
-        <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-12 text-center">
-                  <!-- This is where the dropdowns and buttons will live -->
-                  <h1>Find Your Home in NYC Here!</h1>
-        <p>Our dashboard works similar to the well-known site Zillow. Use the filters below to help find your new home! </p>
+    
+  </nav>
+  <h1>Find Your Home in NYC Here!</h1>
+    
+    <div class="container">
+      <div class="left-content">
+        <p>Our dashboard works similar to the well-known site Zillow. Use the filters below to help find your new home!</p>
         <p>Filters:</p>
-        <ul>
+        <ul style="list-style-type: none;">
           <li>House Type: What type of home do you want to live in?</li>
           <li>Price: How much are you willing to spend?</li>
           <li>Bedrooms: How many bedrooms do you want?</li>
           <li>Bathrooms: How many bathrooms do you want?</li>
           <li>Distance: How many miles do you want to be from the heart of New York City?</li>
         </ul>
-        <p class = "red"> Note: All of our numeric filters will show you all data less than or equal to the value you select. For example: Bedrooms = 5 will show you all houses with 1-5 total bedrooms</p>
-        <p>After you have selected your filters, hit the 'Apply Filters' button and watch the magic happen! </p>
-      
-              </div>
-          </div>
+        <p class="red">Note: All of our numeric filters will show you all data less than or equal to the value you select. For example: Bedrooms = 5 will show you all houses with 1-5 total bedrooms</p>
+        <p>After you have selected your filters, hit the 'Apply Filters' button and watch the magic happen!</p>
+      </div>
+      <div class="right-content">
+        <p>The scatter plot on the left is dynamic with the filters you select. The plot displays distance (in miles) of each home from the center of New York City versus the price and square feet. </p>
+        <p>In order to prove New York City follows the CBD model, the scatter plot should show a negative correlation (in plain words, a diagonal line pattern that starts up and goes down to the right).</p>
+        <p>The bar chart on the right shows the top 10 most expensive homes for sale and is dynamic with the filters you select similar to the scatter plot.</p>
+        <p>Try to find the house type with the most expensive prices.</p>
+        <p>Make sure to interact with the map. You can zoom in, move around, and even change the background!</p>
+      </div>
+    </div>
+    
+
         <hr>
 
         <div class ="row">
@@ -108,7 +141,7 @@
         </div>
         <div class="col-md-2 text-center">
           <label for="baths_filter">Distance (Miles):</label>
-          <input type="number" id="distance_filter" name="distance" min="0" max="100" step="1" value = "15">
+          <input type="number" id="distance_filter" name="distance" min="0" max="100" step="5" value = "15">
         </div>
 
         <div class="col-md-2 text-center">
@@ -130,6 +163,7 @@
 
                 <!-- This is where the map will go -->
                 <div id="map_container"></div>
+                <div class="map-title">New York City House Market</div>
             </div>
         </div>
     </div>

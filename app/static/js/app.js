@@ -48,8 +48,13 @@ function makeMap(data) {
   // Empty the map_container div
   mapContainer.html("");
 
+  // Append the title element
+  mapContainer.append("h2").text("New York Houses Available").style("text-align", "center");
+
   // Append a div with id "map" inside the map_container div
   mapContainer.append("div").attr("id", "map");
+
+  
 
   // Step 1: Define your BASE Layers
 
@@ -79,7 +84,8 @@ function makeMap(data) {
     let location = [latitude, longitude];
 
     // Add a new marker to the cluster group, and bind a popup.
-    let marker = L.marker(location).bindPopup(`<h3>$${row.PRICE}</h3>`);
+    let marker = L.marker(location).bindPopup(`<h3>$${row.PRICE}</h3><p>${row.ADDRESS}</p>`);
+
     markerLayer.addLayer(marker);
 
     // for the heatmap
@@ -121,13 +127,13 @@ function makeBar(data) {
 
   // Trace for the Data
   let trace = {
-    x: data.bar_data.map(row => row.PRICE),
-    y: data.bar_data.map(row => row.ADDRESS),
+    x: data.bar_data.map(row => row.PRICE).reverse(),
+    y: data.bar_data.map(row => row.ADDRESS).reverse(), 
     type: "bar",
     orientation: "h",
     order: 'ascending',
     marker: {
-      color: '#45C070' // Specify the color you want for all bars
+      color: '#45C070' 
     }
   }
 
@@ -136,9 +142,12 @@ function makeBar(data) {
 
   // Apply a title to the layout
   let layout = {
-    title: `10 Most Expensive Houses`,
+    title: `The 10 Most Expensive Houses`,
     yaxis1: {
       title: 'Address'},
+    xaxis: {
+      title: 'Price'
+    },
     margin: { l: 200 }}
 
   // Render the plot to the div tag with id "plot"
@@ -163,7 +172,7 @@ function makeScatter(data) {
   let scatter_layout = {
     title: 'Distance from NYC Center vs Price by Square Foot',
     xaxis: {
-      title: 'Distance from Center of NYC (Miles)'
+      title: 'Distance (Miles)'
     },
     yaxis: {
       title: 'Price by Square Foot'
