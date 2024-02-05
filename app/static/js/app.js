@@ -125,6 +125,7 @@ function makeBar(data) {
     y: data.bar_data.map(row => row.ADDRESS),
     type: "bar",
     orientation: "h",
+    order: 'ascending',
     marker: {
       color: '#45C070' // Specify the color you want for all bars
     }
@@ -136,6 +137,8 @@ function makeBar(data) {
   // Apply a title to the layout
   let layout = {
     title: `10 Most Expensive Houses`,
+    yaxis1: {
+      title: 'Address'},
     margin: { l: 200 }}
 
   // Render the plot to the div tag with id "plot"
