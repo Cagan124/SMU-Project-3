@@ -12,7 +12,7 @@ Data Set:
 For this project we chose the New York Housing Market dataset on Kaggle: https://www.kaggle.com/datasets/nelgiriyewithana/new-york-housing-market. This dataset included data on homes for sale in the New York City area as of November 2023. For our dataset, we wanted to utilize data we could tell a data driven story with and also included spatial coordinates (latitude and longitude). The spatial coordinates were essential data points to achieve our goal of creating a map visualization. Additional fields included: the home addresses, price, number of beds, number of baths, and the size of each home (square feet).
 
 
-For details of the work done during this project please view the 'Reports' folder for our final presentation and write up. Our 'app' folder will showcase the work done to create our application, and the 'nyc' folder for our data cleasning/manipulation notebooks and planning our application. Additionally, our SQL query notebook can be found in the 'nyc' folder as well. Lastly, our dataset can be found in the 'Resources' directory within the 'nyc' folder.
+For details of the work done during this project please view the 'Reports' folder for our final presentation and write up. Our 'app' folder will showcase the work done to create our application, and the 'nyc' folder showcases our data cleasning/manipulation notebooks and planning our application. Additionally, our SQL query notebook can be found in the 'nyc' folder as well. Lastly, our dataset can be found in the 'Resources' directory within the 'nyc' folder.
 
 Group Members:
 - Cagan Abney
