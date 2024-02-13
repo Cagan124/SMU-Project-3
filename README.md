@@ -3,7 +3,7 @@
 Project Objectives:
 1. Choose an interesting and insightful dataset with spatial coordinattes to build an interactive dashboard with a map
 2. Read a CSV dataset into Pandas and use data cleaning and manipulation methods to prepare our data, and plan what visualizations will be used
-3. Convert cleansed CSV dataset to a SQLite database and create queries for a Flask API
+3. Convert cleansed CSV dataset to a SQLite database and query data to a Flask API
 4. Create an interactive dashboard application utilizing HTML, CSS, and JavaScript.
 
 Project Topic: With this project, we want to explore if the city of New York follows the Concentric City Model or if, on the contrary, it appears to have a different layout that would apply to a different city model.
