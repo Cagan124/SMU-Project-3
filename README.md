@@ -17,5 +17,5 @@ For details of the work done during this project please view the 'Reports' folde
 Group Members:
 - Cagan Abney
 - Fernanda Valdez
-- Jonathan Uger
+- Jonathan Unger
 - Joshua Hale
